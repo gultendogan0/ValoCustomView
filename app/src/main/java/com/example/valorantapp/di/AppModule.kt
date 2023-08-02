@@ -1,9 +1,10 @@
 package com.example.valorantapp.di
 
-import com.example.valorantapp.data.remote.ValorantApi
+import com.example.valorantapp.data.remote.api.ValorantApi
 import com.example.valorantapp.other.Constants.BASE_URL
-import com.example.valorantapp.repositories.ValorantRepository
-import com.example.valorantapp.repositories.ValorantRepositoryImpl
+import com.example.valorantapp.data.remote.repositories.ValorantRepository
+import com.example.valorantapp.data.remote.repositories.ValorantRepositoryImpl
+import com.example.valorantapp.domain.usecase.GetAllAgentsUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,9 +27,15 @@ object AppModule {
             .create(ValorantApi::class.java)
     }
 
-    @Provides
     @Singleton
-    fun provideValorantRepository(repository: ValorantRepositoryImpl): ValorantRepository {
-        return repository
+    @Provides
+    fun provideValorantRepository(api: ValorantApi): ValorantRepository {
+        return ValorantRepositoryImpl(api)
+    }
+
+    @Singleton
+    @Provides
+    fun provideGetAllAgentsUseCase(repository: ValorantRepository): GetAllAgentsUseCase {
+        return GetAllAgentsUseCase(repository)
     }
 }

@@ -5,6 +5,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.valorantapp.R
+import com.example.valorantapp.other.Resource
 import com.example.valorantapp.ui.viewmodel.ValorantViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -18,5 +19,14 @@ class AgentListFragment : Fragment(R.layout.fragment_agent_list){
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(requireActivity()).get(ValorantViewModel::class.java)
 
+        viewModel.agentsState.observe(viewLifecycleOwner) { resource ->
+            val agentResponse = resource.data
+            if (agentResponse != null) {
+                val agents = agentResponse.data
+                println("AGENT LIST: $agents")
+            }
+        }
+
+        viewModel.getAllAgents()
     }
 }

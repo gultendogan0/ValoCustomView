@@ -1,6 +1,6 @@
-package com.example.valorantapp.data.remote
+package com.example.valorantapp.data.remote.api
 
-import com.example.valorantapp.data.remote.responses.AgentResponse
+import com.example.valorantapp.domain.model.AgentResponse
 import retrofit2.Response
 import retrofit2.http.GET
 

@@ -1,9 +1,9 @@
-package com.example.valorantapp.repositories
+package com.example.valorantapp.data.remote.repositories
 
 import android.util.Log
 import com.example.valorantapp.other.Resource
-import com.example.valorantapp.data.remote.ValorantApi
-import com.example.valorantapp.data.remote.responses.AgentResponse
+import com.example.valorantapp.data.remote.api.ValorantApi
+import com.example.valorantapp.domain.model.AgentResponse
 import javax.inject.Inject
 
 class ValorantRepositoryImpl @Inject constructor(
