@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.valorantapp.data.remote.repositories.ValorantRepository
+import com.example.valorantapp.domain.model.Agent
 import com.example.valorantapp.domain.model.AgentResponse
 import com.example.valorantapp.domain.usecase.GetAllAgentsUseCase
 import com.example.valorantapp.other.Resource
@@ -24,7 +24,26 @@ class ValorantViewModel @Inject constructor(private val getAllAgentsUseCase: Get
             val response = getAllAgentsUseCase()
             _agentsState.value = response
 
-
         }
+    }
+
+    fun getDuelistAgents(): List<Agent> {
+        val response = agentsState.value?.data
+        return response?.data?.filter { it.role?.displayName == "Duelist" } ?: emptyList()
+    }
+
+    fun getControllerAgents(): List<Agent> {
+        val response = agentsState.value?.data
+        return response?.data?.filter { it.role?.displayName == "Controller" } ?: emptyList()
+    }
+
+    fun getInitiatorAgents(): List<Agent> {
+        val response = agentsState.value?.data
+        return response?.data?.filter { it.role?.displayName == "Initiator" } ?: emptyList()
+    }
+
+    fun getSentinelAgents(): List<Agent> {
+        val response = agentsState.value?.data
+        return response?.data?.filter { it.role?.displayName == "Sentinel" } ?: emptyList()
     }
 }

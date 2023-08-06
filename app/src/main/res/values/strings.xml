@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ValorantApp</string>
+    <string name="agents">AGENTS</string>
 </resources>

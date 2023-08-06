@@ -90,6 +90,9 @@ dependencies {
 
     // Lottie
     implementation 'com.airbnb.android:lottie:5.2.0'
+
+    // Palette
+    implementation 'androidx.palette:palette-ktx:1.0.0'
 }
 
 kapt {

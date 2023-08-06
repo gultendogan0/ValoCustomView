@@ -2,4 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="kumera">#8D5B20</color>
+    <color name="transparen_white">#B5FFFFFF</color>
+    <color name="bunker">#101B25</color>
+    <color name="radical_red">#FF4654</color>
+    <color name="limed_spruce">#374149</color>
 </resources>
