@@ -23,8 +23,6 @@ class AgentListFragment : Fragment(R.layout.fragment_agent_list) {
         binding = FragmentAgentListBinding.bind(view)
         viewModel = ViewModelProvider(requireActivity()).get(ValorantViewModel::class.java)
 
-        setupRecyclerViews()
-
         viewModel.agentsState.observe(viewLifecycleOwner) { resource ->
             val agentResponse = resource.data
             if (agentResponse != null) {
@@ -32,7 +30,7 @@ class AgentListFragment : Fragment(R.layout.fragment_agent_list) {
                 println("AGENT LIST: $agents")
 
                 if (agents != null) {
-                    setupAgentAdapters(agents)
+                    setupAgentView()
                 }
             }
         }
@@ -40,31 +38,12 @@ class AgentListFragment : Fragment(R.layout.fragment_agent_list) {
         viewModel.getAllAgents()
     }
 
-    private fun setupRecyclerViews() {
-        binding.duelistAgentListRecyclerView.layoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        binding.controllerAgentListRecyclerView.layoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        binding.initiatorAgentListRecyclerView.layoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        binding.sentinelAgentListRecyclerView.layoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-    }
-
-    private fun setupAgentAdapters(agents: List<Agent>) {
-        val duelists = viewModel.getDuelistAgents()
-        val controllers = viewModel.getControllerAgents()
-        val initiator = viewModel.getInitiatorAgents()
-        val sentinels = viewModel.getSentinelAgents()
-
-        val adapterDuelists = duelists?.let { AgentAdapter(it) }
-        val adapterControllers = controllers?.let { AgentAdapter(it) }
-        val adapterInitiator = initiator?.let { AgentAdapter(it) }
-        val adapterSentinels = sentinels?.let { AgentAdapter(it) }
-
-        binding.duelistAgentListRecyclerView.adapter = adapterDuelists
-        binding.controllerAgentListRecyclerView.adapter = adapterControllers
-        binding.initiatorAgentListRecyclerView.adapter = adapterInitiator
-        binding.sentinelAgentListRecyclerView.adapter = adapterSentinels
+    private fun setupAgentView() {
+        binding.run {
+            duelistAgentView.setAgentList(viewModel.getDuelistAgents())
+            controllerAgentView.setAgentList(viewModel.getControllerAgents())
+            initiatorAgentView.setAgentList(viewModel.getInitiatorAgents())
+            sentinelAgentView.setAgentList(viewModel.getSentinelAgents())
+        }
     }
 }
