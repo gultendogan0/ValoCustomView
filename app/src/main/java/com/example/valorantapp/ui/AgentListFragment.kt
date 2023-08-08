@@ -4,9 +4,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.valorantapp.R
-import com.example.valorantapp.adapter.AgentAdapter
+import com.example.valorantapp.adapter.AgentListAdapter
 import com.example.valorantapp.databinding.FragmentAgentListBinding
 import com.example.valorantapp.domain.model.Agent
 import com.example.valorantapp.ui.viewmodel.ValorantViewModel
@@ -27,10 +26,10 @@ class AgentListFragment : Fragment(R.layout.fragment_agent_list) {
             val agentResponse = resource.data
             if (agentResponse != null) {
                 val agents = agentResponse.data
-                println("AGENT LIST: $agents")
 
                 if (agents != null) {
-                    setupAgentView()
+                    setupAgentRecyclerView()
+
                 }
             }
         }
@@ -38,6 +37,23 @@ class AgentListFragment : Fragment(R.layout.fragment_agent_list) {
         viewModel.getAllAgents()
     }
 
+    private fun setupAgentRecyclerView() {
+        val agentSections = listOf(
+            viewModel.getDuelistAgents(),
+            viewModel.getControllerAgents(),
+            viewModel.getInitiatorAgents(),
+            viewModel.getSentinelAgents()
+        )
+
+        val sectionTitles = listOf("Duelists", "Controllers", "Initiators", "Sentinels")
+
+        val adapter = AgentListAdapter(agentSections, sectionTitles)
+        binding.agentRecyclerView.adapter = adapter
+
+    }
+
+
+    /*
     private fun setupAgentView() {
         binding.run {
             duelistAgentView.setAgentList(viewModel.getDuelistAgents())
@@ -46,4 +62,7 @@ class AgentListFragment : Fragment(R.layout.fragment_agent_list) {
             sentinelAgentView.setAgentList(viewModel.getSentinelAgents())
         }
     }
+
+     */
+
 }

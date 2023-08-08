@@ -48,6 +48,18 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.75" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/agentRecyclerView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/agent_list_agents_text" />
+
+
+        <!--
         <com.example.valorantapp.ui.AgentView
             android:id="@+id/duelistAgentView"
             android:layout_width="wrap_content"
@@ -87,6 +99,7 @@
             app:layout_constraintTop_toBottomOf="@id/initiatorAgentView"
             app:recycler="@+id/sentinelAgentListRecyclerView"
             app:text="SENTINEL" />
+            -->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

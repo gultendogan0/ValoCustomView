@@ -2,6 +2,7 @@ package com.example.valorantapp.ui
 
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Log
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -10,7 +11,7 @@ import com.example.valorantapp.R
 import com.example.valorantapp.adapter.AgentAdapter
 import com.example.valorantapp.domain.model.Agent
 
-class AgentView(context: Context, attrs: AttributeSet) : ConstraintLayout(context, attrs) {
+class AgentView(context: Context, attrs: AttributeSet?) : ConstraintLayout(context, attrs) {
 
     private val listName: TextView
     private val agentListRecyclerView: RecyclerView
@@ -25,12 +26,15 @@ class AgentView(context: Context, attrs: AttributeSet) : ConstraintLayout(contex
         listName.text = attributes.getString(R.styleable.AgentView_text)
 
         attributes.recycle()
+
     }
 
-    fun setAgentList(agents: List<Agent>) {
-        agentListRecyclerView.layoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        val adapter = AgentAdapter(agents)
-        agentListRecyclerView.adapter = adapter
+    fun setAgentList(agents: List<Agent>?, recyclerView: RecyclerView) {
+        if (agents != null) {
+            recyclerView.layoutManager =
+                LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            val adapter = AgentAdapter(agents)
+            recyclerView.adapter = adapter
+        }
     }
 }
