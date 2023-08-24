@@ -25,12 +25,7 @@ class AgentListFragment : Fragment(R.layout.fragment_agent_list) {
         viewModel.agentsState.observe(viewLifecycleOwner) { resource ->
             val agentResponse = resource.data
             if (agentResponse != null) {
-                val agents = agentResponse.data
-
-                if (agents != null) {
-                    setupAgentRecyclerView()
-
-                }
+                setupAgentRecyclerView()
             }
         }
 
@@ -45,24 +40,11 @@ class AgentListFragment : Fragment(R.layout.fragment_agent_list) {
             viewModel.getSentinelAgents()
         )
 
-        val sectionTitles = listOf("Duelists", "Controllers", "Initiators", "Sentinels")
+        val sectionTitles = listOf("DUELISTS", "CONTROLLERS", "INITIATORS", "SENTINELS")
 
         val adapter = AgentListAdapter(agentSections, sectionTitles)
         binding.agentRecyclerView.adapter = adapter
 
     }
-
-
-    /*
-    private fun setupAgentView() {
-        binding.run {
-            duelistAgentView.setAgentList(viewModel.getDuelistAgents())
-            controllerAgentView.setAgentList(viewModel.getControllerAgents())
-            initiatorAgentView.setAgentList(viewModel.getInitiatorAgents())
-            sentinelAgentView.setAgentList(viewModel.getSentinelAgents())
-        }
-    }
-
-     */
 
 }

@@ -59,47 +59,6 @@
             app:layout_constraintTop_toBottomOf="@+id/agent_list_agents_text" />
 
 
-        <!--
-        <com.example.valorantapp.ui.AgentView
-            android:id="@+id/duelistAgentView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/agent_list_agents_text"
-            app:recycler="@+id/duelistAgentListRecyclerView"
-            app:text="DUELIST" />
-
-        <com.example.valorantapp.ui.AgentView
-            android:id="@+id/controllerAgentView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/duelistAgentView"
-            app:recycler="@+id/controllerAgentListRecyclerView"
-            app:text="CONTROLLER" />
-
-        <com.example.valorantapp.ui.AgentView
-            android:id="@+id/initiatorAgentView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/controllerAgentView"
-            app:recycler="@+id/initiatorAgentListRecyclerView"
-            app:text="INITIATOR" />
-
-        <com.example.valorantapp.ui.AgentView
-            android:id="@+id/sentinelAgentView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/initiatorAgentView"
-            app:recycler="@+id/sentinelAgentListRecyclerView"
-            app:text="SENTINEL" />
-            -->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
